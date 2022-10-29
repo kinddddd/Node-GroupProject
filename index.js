@@ -2,7 +2,9 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const connectDb = require('./src/utils/db');
-
+// const indexRoutes = require('./src/api/index/index.routes');
+const infoRoutes = require('./src/api/info/infoMovies.routes');
+const moviesRoutes = require('./src/api/movies/movie.routes');
 connectDb();
 
 const PORT = process.env.PORT;
@@ -13,8 +15,9 @@ server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
-
-
+// server.use('/', indexRoutes)
+server.use('/info', infoRoutes)
+server.use('/movies', moviesRoutes)
 
 
 
