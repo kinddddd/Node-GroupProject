@@ -3,7 +3,7 @@ const { isAuth } = require("../../middleware/auth");
 const Movie = require("./movie.model");
 const router = express.Router();
 
-router.get("/", [isAuth], async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const allMovies = await Movie.find().populate("info");
     return res.status(200).json(allMovies);
@@ -34,7 +34,7 @@ router.get("/title/:title", async (req, res) => {
   }
 });
 
-router.post("/create", async (req, res) => {
+router.post("/create", [isAuth], async (req, res) => {
   try {
     const newMovie = new Movie(req.body);
     const createdMovie = await newMovie.save(); /* .populate("info") */
@@ -44,7 +44,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.put("/edit/:id", async (req, res) => {
+router.put("/edit/:id", [isAuth], async (req, res) => {
   try {
     const id = req.params.id;
     const modifiedMovie = new Movie(req.body);
@@ -59,7 +59,7 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", [isAuth], async (req, res) => {
   try {
     const id = req.params.id;
     await Movie.findByIdAndDelete(id).populate("info");
