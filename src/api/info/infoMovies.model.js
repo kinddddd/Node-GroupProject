@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const infoSchema = new Schema(
     {
+        title:{type: String, required: true},
         genre:{type :String, required:true},
         year:{type :Number, required:true},
         duration:{type:Number, required:true},
