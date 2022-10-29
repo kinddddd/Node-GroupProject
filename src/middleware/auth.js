@@ -8,7 +8,6 @@ const isAuth = async (req, res, next) => {
       return next("Unauthorized");
     }
     const parsedToken = token.replace("Bearer ", "");
-    console.log(parsedToken);
     const validToken = verifyJwt(parsedToken);
     const userLogged = await User.findById(validToken.id);
 
