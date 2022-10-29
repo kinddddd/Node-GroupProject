@@ -7,19 +7,16 @@ const movies = [
     {
         title: 'The Matrix',
         img:'https://blu-ray-rezensionen.net/wp-content/uploads/2015/01/Matrix-Premium-Collection-Blu-ray-Review-Cover.jpg',
-        info:'Funciona'
         
     },
     {
         title: 'nemo',
         img:'https://blu-ray-rezensionen.net/wp-content/uploads/2015/01/Matrix-Premium-Collection-Blu-ray-Review-Cover.jpg',
-        info:'Funciona'
         
     },
     {
         title: 'batman',
         img:'https://blu-ray-rezensionen.net/wp-content/uploads/2015/01/Matrix-Premium-Collection-Blu-ray-Review-Cover.jpg',
-        info:'Funciona'
         
     }
 ];
