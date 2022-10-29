@@ -14,7 +14,6 @@ const isAuth = async (req, res, next) => {
 
     userLogged.password = null;
     req.user = userLogged;
-    console.log(token);
     next();
   } catch (error) {
     return next("no puedes pasar");
