@@ -2,6 +2,8 @@ const express = require("express");
 const { isAuth } = require("../../middleware/auth");
 const Movie = require("./movie.model");
 const router = express.Router();
+const upload = require('../../middleware/file')
+const { deleteFile } = require('../../middleware/delete')
 
 router.get("/", async (req, res) => {
   try {
@@ -34,10 +36,22 @@ router.get("/title/:title", async (req, res) => {
   }
 });
 
-router.post("/create", [isAuth], async (req, res) => {
+router.post("/create", upload.single('img'), async (req, res) => {
   try {
-    const newMovie = new Movie(req.body);
-    const createdMovie = await newMovie.save(); /* .populate("info") */
+    let image;
+        if (req.file) {
+            image = req.file.path;
+        } else {
+            image = req.body.img;
+        }
+        
+    const newMovie = new Movie({
+      title: req.body.title,
+      img: image,
+      info: req.body.info
+    });
+
+    const createdMovie = await newMovie.save();
     return res.status(200).json(createdMovie);
   } catch (error) {
     return res.status(500).json("Error al crear la pelicula", error);

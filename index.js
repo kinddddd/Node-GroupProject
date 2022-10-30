@@ -6,6 +6,15 @@ const indexRoutes = require("./src/api/index/index.routes");
 const infoRoutes = require("./src/api/info/infoMovies.routes");
 const moviesRoutes = require("./src/api/movies/movie.routes");
 const usersRoutes = require("./src/api/user/user.routes");
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
+
+
 connectDb();
 
 const PORT = process.env.PORT;
