@@ -36,7 +36,7 @@ router.get("/title/:title", async (req, res) => {
   }
 });
 
-router.post("/create", upload.single('img'), async (req, res) => {
+router.post("/create", upload.single('img'), [isAuth], async (req, res) => {
   try {
     let image;
         if (req.file) {
