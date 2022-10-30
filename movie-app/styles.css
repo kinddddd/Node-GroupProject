@@ -78,3 +78,16 @@ html {
 .movie-box:hover {
   cursor: pointer;
 }
+.img-size{
+  width: 400px;
+  height: 500px;
+}
+.movie-detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.movie-detail > h3{
+  margin-bottom: 20px;
+} 
