@@ -30,6 +30,19 @@ const printSelect = (movies)=>{// esta funcion recoge las pelis y crea una opcio
 const printMovies = (movie)=>{// como argumento le pasamos movie que es lo que tiene que pintar
     movieCont$$.innerHTML='';// para borrar el div
     const name$$ = document.createElement('h3');
+    const infoBox$$ = document.createElement('div');
+    infoBox$$.classList.add('infoBox');
+    const genre$$ = document.createElement('p');
+    genre$$.textContent = `Género: ${movie.info[0].genre}`
+    const year$$ = document.createElement('p');
+    year$$.textContent = `Año: ${movie.info[0].year}`
+    const duration$$ = document.createElement('p');
+    duration$$.textContent = `Duración: ${movie.info[0].duration}`
+    const director$$ = document.createElement('p');
+    director$$.textContent = `Director: ${movie.info[0].director}`
+    const synopsis$$ = document.createElement('p');
+    synopsis$$.textContent = `Sinópsis: ${movie.info[0].synopsis}`
+    synopsis$$.classList.add('lastInfo');
     name$$.textContent = movie.title;
     const img$$ = document.createElement('img');
     img$$.classList.add('img-size');
@@ -38,6 +51,12 @@ const printMovies = (movie)=>{// como argumento le pasamos movie que es lo que t
     divForMovie$$.classList.add('movie-detail');
     divForMovie$$.appendChild(name$$);
     divForMovie$$.appendChild(img$$);
+    divForMovie$$.appendChild(infoBox$$);
+    infoBox$$.appendChild(genre$$);
+    infoBox$$.appendChild(year$$);
+    infoBox$$.appendChild(duration$$);
+    infoBox$$.appendChild(director$$);
+    infoBox$$.appendChild(synopsis$$);
     movieCont$$.appendChild(divForMovie$$);
 }
 

@@ -6,7 +6,6 @@
   padding: 0 10px;
   text-decoration: none;
   color: black;
-  text-transform: capitalize;
 }
 
 html {
@@ -87,7 +86,37 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 600px;
+  margin-right: 600px;
+  background-color: #FAFAD2;
+  border-radius: 10px;
 }
 .movie-detail > h3{
   margin-bottom: 20px;
+  margin-top: 20px;
 } 
+
+.infoBox {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+p {
+  padding-top: 10px;
+}
+
+.lastInfo {
+  margin-bottom: 50px;
+}
+
+.form {
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.crear {
+  margin-left: 15px;
+}
