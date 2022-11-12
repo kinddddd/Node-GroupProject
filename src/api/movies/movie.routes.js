@@ -2,8 +2,8 @@ const express = require("express");
 const { isAuth } = require("../../middleware/auth");
 const Movie = require("./movie.model");
 const router = express.Router();
-const upload = require('../../middleware/file')
-const { deleteFile } = require('../../middleware/delete')
+const upload = require("../../middleware/file");
+const { deleteFile } = require("../../middleware/delete");
 
 router.get("/", async (req, res) => {
   try {
@@ -36,19 +36,19 @@ router.get("/title/:title", async (req, res) => {
   }
 });
 
-router.post("/create", upload.single('img'), async (req, res) => {
+router.post("/create", upload.single("img"), async (req, res) => {
   try {
     let image;
-        if (req.file) {
-            image = req.file.path;
-        } else {
-            image = req.body.img;
-        }
-        
+    if (req.file) {
+      image = req.file.path;
+    } else {
+      image = req.body.img;
+    }
+
     const newMovie = new Movie({
       title: req.body.title,
       img: image,
-      info: req.body.info
+      info: req.body.info,
     });
 
     const createdMovie = await newMovie.save();
@@ -82,5 +82,16 @@ router.delete("/delete/:id", [isAuth], async (req, res) => {
     return res.status(500).json("Error al borrar la pelicula", error);
   }
 });
+
+router.post("/checksession", [isAuth], (req, res, next) => {
+  console.log(req.headers.authorization);
+  try {
+    return res.status(200).json(req.user);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+module.exports = router;
 
 module.exports = router;
